@@ -1,0 +1,116 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/afterlogin.css' %}">
+    <title>PodCasts</title>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="#" class="logo">Ear Candy</a>
+        
+        <div class="nav-links">
+            <ul>
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="like_audio_file">Liked</a></li>
+                <li><a href="like_audio_file">Watchlist</a></li>
+                <li><a href="logout">Log out</a></li>
+            </ul>
+        </div>
+        <img src="../ear candy /covers/menu-btn.png" alt="menu" class="menu">
+        <img src="{% static 'images/menu-btn.png' %}" alt="NFT Image">
+    </nav>
+    <header></header>
+    <section>
+        
+        <div class="content">
+            <h1>WELCOME TO EARCANDY !</h1>
+            <p>Listen anytime anywhere !<br>to your faviourte podcasts !</p>
+            <a href="#steam">LISTEN NOW</a>
+        </div>
+    </section>
+    <section>    
+        
+        {% for audio in audio_files %}
+        <div class="card-container">
+            <div class="card">
+            <div class="image">
+                <img src="{{audio.file1.url}}" alt="NFT Image">
+                    </a>
+            </div>
+            <div class="info">
+                <main id="steam">
+                    <h2>LISTEN TO : </h2>
+                    <p>{{audio.podcastname }}</p>
+                    <p>{{audio.podcast_id}}</p>
+                    <audio>
+                        <source src="{{ audio.file.url }}" type="audio/mpeg">
+                    </audio>    
+                        <button onclick="pauseAllAudiosExceptThisOne(this)">Play</button>
+                    <form method ="POST" , action='like_audio_file'>
+                        {% csrf_token %}
+                        <input type="hidden" , name='idid', id='idid' ,value="{{audio.podcast_id}}">    
+                        <button type="submit">like</button>
+                    </form>
+                        
+                
+                        
+                   
+                </main>
+                </div>
+            </div>
+        </div>
+   
+        {% endfor %} 
+
+        
+    
+    <script>
+        var allAudios = document.getElementsByTagName("audio");
+
+        function pauseAllAudiosExceptThisOne(clickedButton) {
+            var thisAudio = clickedButton.parentNode.querySelector("audio");
+            for (var i=0; i < allAudios.length; i++) {
+              if (allAudios[i] != thisAudio) {
+                allAudios[i].pause();
+              }
+            }
+            if (thisAudio.paused) {
+              thisAudio.play();
+              clickedButton.innerHTML = "Pause";
+            } else {
+              thisAudio.pause();
+              clickedButton.innerHTML = "Play";
+            }
+          }
+          
+    
+        const menuHamburger = document.querySelector(".menu")
+        const navLinks = document.querySelector(".nav-links")
+ 
+        menuHamburger.addEventListener('click',()=>{
+        navLinks.classList.toggle('mobile-menu')
+        })
+
+
+        document.getElementById("my-button").addEventListener("click", function() {
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "/my-view-url/");
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    console.log(xhr.responseText);
+                }
+            };
+            xhr.send(JSON.stringify({ "button_pressed": true }));
+        });
+</script>
+</body>
+</html>
+
+
+
+

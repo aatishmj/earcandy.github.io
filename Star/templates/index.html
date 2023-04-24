@@ -1,0 +1,116 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Play Audio</title>
+</head>
+<body>
+    {% for audio in audio_files %}
+    <div>
+      <h2>{{ audio.podcastname }}</h2>
+      <p>{{ audio.podcast_des }}</p>
+      <audio controls>
+        <source src="{{ audio.file.url }}" type="audio/mpeg">
+      </audio>
+      <img src="{{audio.file1.url}}">hello </img>
+      <button onclick="pauseAllAudiosExceptThisOne(this)">Play</button>
+    </div>
+    {% endfor %} 
+
+    <script>
+      var allAudios = document.getElementsByTagName("audio");
+
+      function pauseAllAudiosExceptThisOne(clickedButton) {
+        var thisAudio = clickedButton.parentNode.querySelector("audio");
+        for (var i=0; i < allAudios.length; i++) {
+          if (allAudios[i] != thisAudio) {
+            allAudios[i].pause();
+          }
+        }
+        thisAudio.play();
+      }
+    </script>
+</body>
+</html> 
+{% comment %} <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Audio Files</title>
+  <style>
+    body {
+      background-color: #1a1a1a;
+      color: white;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .container {
+      margin: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+    }
+
+    .card {
+      background-color: #333;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+      margin: 20px;
+      width: 300px;
+      height: 400px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    img {
+      max-width: 100%;
+      max-height: 70%;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+      margin-top: 10px;
+    }
+
+    audio {
+      width: 80%;
+      margin-top: 10px;
+    }
+
+    .card-title {
+      font-size: 24px;
+      margin-top: 10px;
+    }
+
+    .play-button {
+      background-color: #4CAF50;
+      border: none;
+      color: white;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin-top: 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    {% for file in audio_files %}
+    <div class="card">
+      <img src="{{ file.file1.url }}" alt="{{ file.podcastname }}">
+      <div class="card-title">{{ file.podcastname }}</div>
+      <audio controls>
+        <source src="{{ file.file.url }}" type="{{ file.file.url|mime_type }}">
+        Your browser does not support the audio element.
+      </audio>
+      <button class="play-button" onclick="document.querySelector('audio').play()">Play</button>
+    </div>
+    {% endfor %}
+  </div>
+</body>
+</html> {% endcomment %}

@@ -1,0 +1,353 @@
+{% comment %} <!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Page</title>
+    <style>
+        /* Custom CSS styles */
+        body {
+            background-color: #1c1c1c;
+            color: #f2f2f2;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            margin-top: 0;
+            font-size: 36px;
+        }
+
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #333;
+            border-radius: 10px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: none;
+            background-color: #555;
+            color: #f2f2f2;
+            font-size: 16px;
+        }
+
+        input[type="file"] {
+            margin-bottom: 20px;
+        }
+
+        button[type="submit"] {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            background-color: #009933;
+            color: #f2f2f2;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #00802b;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Admin Page</h1>
+    
+{% if messages %}
+{% for message in messages %}
+    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+        {{ message }}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    {% endfor %}
+{% endif %}
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="audio">Audio File:</label>
+        <input type="file" name="audio" id="audio" required>
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name" required>
+        <label for="description">Description:</label>
+        <textarea name="description" id="description" rows="5" required></textarea>
+        <button type="submit">Upload</button>
+    </form>
+</body>
+</html>
+
+
+
+
+
+
+ {% endcomment %}
+
+ {% comment %} <!DOCTYPE html>
+ <html>
+ <head>
+     <title>Admin Page</title>
+     <style>
+         /* Custom CSS styles */
+         body {
+             background-color: #1c1c1c;
+             color: #f2f2f2;
+             font-family: Arial, sans-serif;
+         }
+ 
+         h1 {
+             margin-top: 0;
+             font-size: 36px;
+         }
+ 
+         form {
+             max-width: 500px;
+             margin: 0 auto;
+             padding: 20px;
+             background-color: #333;
+             border-radius: 10px;
+         }
+ 
+         label {
+             display: block;
+             margin-bottom: 10px;
+             font-size: 20px;
+         }
+ 
+         input[type="text"],
+         textarea {
+             width: 100%;
+             padding: 10px;
+             margin-bottom: 20px;
+             border-radius: 5px;
+             border: none;
+             background-color: #555;
+             color: #f2f2f2;
+             font-size: 16px;
+         }
+ 
+         input[type="file"] {
+             margin-bottom: 20px;
+         }
+ 
+         button[type="submit"] {
+             display: block;
+             width: 100%;
+             padding: 10px;
+             border-radius: 5px;
+             border: none;
+             background-color: #009933;
+             color: #f2f2f2;
+             font-size: 20px;
+             font-weight: bold;
+             cursor: pointer;
+         }
+ 
+         button[type="submit"]:hover {
+             background-color: #00802b;
+         }
+ 
+         .alert {
+             padding: 20px;
+             background-color: #4CAF50;
+             color: white;
+             border-radius: 10px;
+             margin-bottom: 20px;
+         }
+ 
+         .closebtn {
+             margin-left: 15px;
+             color: white;
+             font-weight: bold;
+             float: right;
+             font-size: 22px;
+             line-height: 20px;
+             cursor: pointer;
+             transition: 0.3s;
+         }
+ 
+         .closebtn:hover {
+             color: black;
+         }
+ 
+     </style>
+ </head>
+ <body>
+     <h1>Admin Page</h1>
+     
+     {% if messages %}
+     {% for message in messages %}
+     <div class="alert alert-{{ message.tags }}">
+         <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+         {{ message }}
+     </div>
+     {% endfor %}
+     {% endif %}
+ 
+     <form method="POST" enctype="multipart/form-data">
+         {% csrf_token %}
+         <label for="audio">Audio File</label>
+         <input type="file" name="audio" id="audio" required>
+
+         <label for="image">Thumbnail:</label>
+         <input type="file" name="image" id="image" required>
+
+         <label for="podcast_name">Title</label>
+         <input type="text" name="podcast_name" id="podcast_name" required>
+
+         <label for="speaker">Name of the Speaker</label>
+         <input type="text" name="speaker" id="speaker" required>
+
+         <label for="description">Description:</label>
+         <textarea name="description" id="description" rows="5" required></textarea>
+
+         <button type="submit">Upload</button>
+     </form>
+ </body>
+ </html>
+  {% endcomment %}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Page</title>
+    <style>
+        /* Custom CSS styles */
+        body {
+            background-color: #1c1c1c;
+            color: #f2f2f2;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            margin-top: 0;
+            font-size: 36px;
+        }
+
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #333;
+            border-radius: 10px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: none;
+            background-color: #555;
+            color: #f2f2f2;
+            font-size: 16px;
+        }
+
+        input[type="file"] {
+            margin-bottom: 20px;
+        }
+
+        button[type="submit"] {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            background-color: #009933;
+            color: #f2f2f2;
+            font-size: 20px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #00802b;
+        }
+
+        .alert {
+            padding: 20px;
+            background-color: #4CAF50;
+            color: white;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .closebtn {
+            margin-left: 15px;
+            color: white;
+            font-weight: bold;
+            float: right;
+            font-size: 22px;
+            line-height: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .closebtn:hover {
+            color: black;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Admin Page</h1>
+
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }}">
+        <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+        {{ message }}
+    </div>
+    {% endfor %}
+    {% endif %}
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="audio_or_video">Select whether to upload an audio or a video file:</label>
+        <select id="audio_or_video" name="audio_or_video">
+            <option value="audio">Audio</option>
+            <option value="video">Video</option>
+        </select>
+
+        <label for="audio_or_video_file">File:</label>
+        <input type="file" name="audio_or_video_file" id="audio_or_video_file" required>
+
+        <label for="image">Thumbnail:</label>
+        <input type="file" name="image" id="image" required>
+
+        <label for="podcast_name">Title</label>
+        <input type="text" name="podcast_name" id="podcast_name" required>
+
+        <label for="speaker">Name of the Speaker</label>
+        <input type="text" name="speaker" id="speaker" required>
+
+        <label for="description">Description:</label>
+        <textarea name="description" id="description" rows="5" required></textarea>
+
+
+        <button type="submit">Upload</button>
+    </form>
+</body>
+</html>

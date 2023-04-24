@@ -1,0 +1,199 @@
+{% comment %} {% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="style2.css">
+    <link rel="icon" href="../favicon.svg" type="image/svg+xml">
+</head>
+<body>
+    
+    <div class ="menubar">
+        <ul>      
+            <li class="passive"><a href="#">home</a></li>
+            <li><a href="../ear candy /hackathon/project.html">Log in </a></li>
+            <li><a href="../ear candy /hackathon/signup.html">registration</a></li>
+            <div class="search">
+                <label>search:</label>
+                <i class="bi bi-search"></i>
+                <input type="text" placeholder="Search Podcasts...">
+            </div>
+            <a href="#" id="toggle"><ion-icon name="menu"></ion-icon></a>
+        </ul>
+    </div>
+    <section>
+        <div class="content">
+            <h1>WELCOME TO EARCANDY !</h1>
+            <p>Listen anytime anywhere !<br>to your faviourte podcasts !</p>
+            <a href="#steam">LISTEN NOW</a>
+        </div>
+    </section>
+    
+    <main id="steam">
+        <section>    
+            <div class="card-container">
+                <div class="card">
+                <div class="image">
+                    <img src="../ear candy /covers/1.jpg" alt="NFT Image">
+                </div>
+                <div class="info">
+                    <main id="steam">
+                    <h2>LISTEN TO : </h2>
+                    <p>M.S DHONI</p>
+                    <p>THE UNTOLD STORY</p>
+                    <button>Play Now </button>
+                </main>
+                </div>
+                </div>
+            </div>
+            <div class="card-container">
+                <div class="card">
+                <div class="image">
+                    <img src="../ear candy /covers/5.jpg" alt="NFT Image">
+                </div>
+                <div class="info">
+                    <h2>LISTEN TO : </h2>
+                    <p>M.S DHONI</p>
+                    <p>THE UNTOLD STORY</p>
+                    <button ><a href="../ear candy /hackathon/project.html">Play Now</a> </button>
+                </div>
+                </div>
+            </div>
+            <div class="card-container">
+                <div class="card">
+                <div class="image">
+                    <img src="../ear candy /covers/4.jpg" alt="NFT Image">
+                </div>
+                <div class="info">
+                    <h2>LISTEN TO : </h2>
+                    <p>M.S DHONI</p>
+                    <p>THE UNTOLD STORY</p>
+                    <button ><a href="../ear candy /hackathon/project.html">Play Now</a> </button>
+                </div>
+                </div>
+            </div>
+            <div class="card-container">
+                <div class="card">
+                <div class="image">
+                    <img src="../ear candy /covers/3.jpg" alt="NFT Image">
+                </div>
+                <div class="info">
+                    {%if True %}
+                    <h2>LISTEN TO : </h2>
+                    <p>M.S DHONI</p>
+                    <p>THE UNTOLD STORY</p>
+                    
+                    <button><a href="../ear candy /hackathon/project.html">Play Now</a></button>
+                    {%else %}
+                    <audio controls>
+                        <source drc="{{audio.file.url}}" type="audio/mpeg">
+                    </audio>
+                    <button onclick="pauseAllAudiosExceptThisOne(this)">Play</button>
+    </div>
+    {%endif%}
+    {% endfor %} 
+    
+    <script>
+      var allAudios = document.getElementsByTagName("audio");
+
+      function pauseAllAudiosExceptThisOne(clickedButton) {
+        var thisAudio = clickedButton.parentNode.querySelector("audio");
+        for (var i=0; i<allAudios.length; i++) {
+          if (allAudios[i] != thisAudio) {
+            allAudios[i].pause();
+          }
+        }
+        thisAudio.play();
+      }
+    </script>
+                </div>
+            </div>
+            <div class="card-container">
+                <div class="card">
+                <div class="image">
+                    <img src="../ear candy /covers/2.jpg" alt="NFT Image">
+                </div>
+                <div class="info">
+                    <h2>LISTEN TO : </h2>
+                    <p>M.S DHONI</p>
+                    <p>THE UNTOLD STORY</p>
+                    <button><a href="../ear candy /hackathon/project.html">Play Now</a> </button>
+                </div>
+                </div>
+            </div>
+        </section>
+<!-- </main> -->
+
+    <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
+    <script type="text/javascript">
+        $(document).on('scroll', function(){$('h1').css("left", Math.max(500 - 0.35*window.scrollY,0)+"px");})
+    </script>
+    <script type="text/javascript">
+        window.addEventListener('scroll',reveal);
+        function reveal(){
+            var reveals = document.querySelectorAll('.reveal');
+            for (var i=0 ; i<reveals.length;i++){
+                var windowheight = window.innerHeight;
+                var revealtop = reveals[i].getBoundingClientRect().top;
+                var revealpoint =150;
+
+                if(revealtop<windowheight-revealpoint){
+                    reveals[i].classList.add('active');
+                }
+                else{
+                    reveals[i].classList.remove('active');
+                }
+            }
+        }
+    </script>
+</body>
+</html> {% endcomment %}
+
+
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Audio Player</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css" integrity="sha512-jC+/WkbYgJcgdWRkOjEhZXXjDCb/9xT8TByb/HOylK/98s+EmIlwO8QCVj0aAQofZ2m9mIsm9RZYzntzpKjckA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <style>
+    body {
+      background-color: #212121;
+      color: #fff;
+    }
+    .card-img-top {
+      max-height: 200px;
+      object-fit: cover;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="text-center mt-4 mb-4">Audio Player</h1>
+    <div class="row">
+      {% for folder in folders %}
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="{{ folder.images.0.url }}" class="card-img-top">
+          <div class="card-body">
+            <h5 class="card-title">{{ folder.folder_name }}</h5>
+            <p class="card-text">{{ folder.folder_description }}</p>
+            <audio controls>
+              {% for audio in folder.audios %}
+              <source src="{{ audio.url }}" type="audio/mpeg">
+              {% endfor %}
+            </audio>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</body>
+</html>

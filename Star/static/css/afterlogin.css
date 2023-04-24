@@ -1,0 +1,306 @@
+html{
+    scroll-behavior: smooth;
+}
+
+*{
+    margin:0;
+    padding:0;
+    text-decoration: none;
+    list-style:none;
+}
+
+body{
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: rgb(15, 16, 16);
+    border-radius: 25px;
+}
+
+header
+{
+    height: 100vh;
+    width: 100vw;
+    background-image: url("/static/images/mic.jpg");
+    background-size: cover;
+}
+
+.navbar
+{
+    position :absolute;
+    padding: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.navbar a
+{
+    color: white;
+}
+
+.navbar .logo
+{
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.navbar .nav-links
+{
+    display: flex;
+    align-items: center;
+}
+
+.navbar .nav-links ul
+{
+    display: flex;
+}
+
+.navbar .nav-links ul li
+{
+    margin: 0 25px;
+}
+
+.navbar .nav-links ul li.active a 
+{
+    color: rgba(69, 153, 248, 0.926);
+    font-weight: 600;
+}
+
+.navbar .menu
+{
+    display: none;
+    position: absolute;
+    top: 50px;
+    right: 30px;
+    width: 35px;
+}
+
+.mobile-menu
+{
+    margin-left: 0;
+}
+
+.search 
+{
+    width: 150px;
+    margin: 15px 65px;
+    padding: 15px 65px;
+    box-sizing: border-box;
+    background-color: rgb(0, 0, 0);
+    display: inline-flex;
+    text-decoration: none;
+}
+
+section
+{
+    min-height: 80vh;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+}
+
+
+/* center content */
+.content
+{
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+    color: #fff;
+}
+
+.content h1
+{
+    font-size: 60px;
+    margin-top: 80px;
+}
+
+.content p
+{
+     margin: 30px auto;
+     font-weight: 150;
+     line-height: 25px;
+     font-size: 20px;
+}
+
+.content a{
+    width: 150px;
+    margin: 15px;
+    padding: 15px;
+}
+
+.content a 
+{
+    text-decoration: none;
+    color: rgb(255, 252, 252);    
+}
+
+.content a:hover
+{
+    color: #000000;
+    background-color:white;
+    border-radius: 3px;
+}
+/* section:nth-child(1)
+{
+    color:rgb(197, 53, 53) ;
+    background:linear-gradient(to bottom,black,rgba(1, 194, 184, 0.964));
+
+} */
+
+/* section:nth-child(2)
+{
+    color:black ;
+    background:linear-gradient(to bottom,black,rgba(0, 0, 0, 0.964));
+} */
+
+section:nth-child(3)
+{
+    color:rgb(175, 56, 56) ;
+    background:linear-gradient(to bottom,black,rgba(0, 0, 0, 0.964));
+}
+
+section:nth-child(4)
+{
+    color:rgb(176, 53, 53) ;
+    background:linear-gradient(to bottom,black,rgb(34, 37, 37));
+}
+
+
+
+
+/* cards */
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    
+  }
+  
+  .card {
+    border: 1px solid #030303;
+    border-radius: 20px;
+    margin: 5px;
+    overflow: hidden;
+    width: 250px;
+    background:rgb(10, 3, 45);
+    align-items: center;
+  }
+  
+  .image img {
+    width: 100%;
+  }
+  
+  .info {
+    background-color: #f00404;
+    padding: 10px;
+    background: linear-gradient(to bottom, #06002f, #020325);
+  }
+  
+  h2 {
+    font-size: 12px;
+    margin: 0 0 10px 0;
+    color: #f9f9f9;
+    align-items: center;
+  }
+  
+  p {
+    font-size: 10px;
+    margin: 0 0 5px 0;
+    color: #f9f9f9;
+    align-content: center;
+  }
+  
+  button {
+    background-color: #000000;
+    border:none;
+    border-radius: 15px;
+    color: #fff;
+    cursor: pointer;
+    font-size: 16px;
+    margin: 0px;
+    padding: 10px;
+    width: 100%;
+  }
+  
+  button:hover {
+    background-color: #14243f;
+  }
+
+  * transition effect  */
+.reveal{
+    position:relative;
+    transform: translateY(150px);
+    opacity: 0;
+    transition: all 2s ease;
+}
+
+.reveal.active{
+    transform: translateY(0px);
+    opacity: 1;
+}
+
+
+
+@media screen and (max-width:900px) 
+{
+    .navbar
+    {
+        padding: 0;
+    }
+
+    .navbar .logo
+    {
+        position: absolute;
+        top: 40px;
+        left: 30px;
+    }
+    .navbar .menu
+    {
+        display: block;
+    }
+    .nav-links
+    {
+        top: 0;
+        left: 0;
+        position: absolute;
+        background-color: rgba(0, 255, 255, 0.13);
+        backdrop-filter: blur(5px);
+        width: 100%;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: -100%;
+        transition: all 0.5s ease ;
+    }
+    
+    .nav-links.mobile-menu
+    {
+        margin-left: 0;
+    }
+
+    .nav-links ul
+    {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .navbar .nav-links ul li
+    {
+        margin: 25px 0;
+        font-size: 1.2em;
+    }
+
+
+}
+
+.like-btn i {
+    font-size: 20px;
+}
